@@ -1,4 +1,4 @@
-//adding express.js to project so its features can be used.
+//adding express.js to server.
 const express = require("express");
 
 //setting up a port variable that will set to ether an environment set point or default to 3001
