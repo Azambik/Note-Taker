@@ -5,6 +5,8 @@ const express = require("express");
 const PORT = process.env.PORT || 3001;
 //calling an instance of express and naming it app
 const app = express();
+//adding htmlRoutes file to server
+const htmlRoutes = require('./routes/htmlRoutes')
 
 //middleware for handling objects with arrays
 app.use(express.urlencoded({ extended: true }))
@@ -12,6 +14,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 //middle ware to allow access to public folder
 app.use(express.static('public'))
+
+//using htmlRoutes
+app.use('/', htmlRoutes);
 
 
 //server set to listen for request on port saved in PORT
