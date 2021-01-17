@@ -31,7 +31,16 @@ const getNotes = () =>
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  }).then(response => {
+    if (!response.ok){
+      return alert('Error ' + response.statusText)
+    }
+    return response.json();
+  })
+  .then(notesData => {
+    console.log(notesData);
+    return JSON.stringify(notesData);
+  })
 
 const saveNote = (note) =>
   fetch('/api/notes', {
@@ -40,16 +49,7 @@ const saveNote = (note) =>
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(note),
-  })
-  .then(response => {
-    if (!response.ok){
-      return alert('Error ' + response.statusText)
-    }
-    return response.json();
-  })
-  .then(notesData => {
-    console.log(notesData);
-  })
+  });
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
@@ -68,6 +68,8 @@ const renderActiveNote = () => {
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.text;
   } else {
+    noteTitle.setAttribute('readonly', false);
+    noteText.setAttribute('readonly', false);
     noteTitle.value = '';
     noteText.value = '';
   }

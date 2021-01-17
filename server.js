@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 //adding htmlRoutes file to server
 const htmlRoutes = require('./routes/htmlRoutes')
+const apiRoutes = require('./routes/apiRoutes');
 
 //middleware for handling objects with arrays
 app.use(express.urlencoded({ extended: true }))
@@ -15,8 +16,10 @@ app.use(express.json());
 //middle ware to allow access to public folder
 app.use(express.static('public'))
 
-//using htmlRoutes
+//using routes
+app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
+
 
 
 //server set to listen for request on port saved in PORT
