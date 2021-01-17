@@ -6,15 +6,14 @@ const PORT = process.env.PORT || 3001;
 //calling an instance of express and naming it app
 const app = express();
 //adding htmlRoutes file to server
-const htmlRoutes = require('./routes/htmlRoutes')
 const apiRoutes = require('./routes/apiRoutes');
-
+const htmlRoutes = require('./routes/htmlRoutes')
 //middleware for handling objects with arrays
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 //middleware for handling json objects
 app.use(express.json());
 //middle ware to allow access to public folder
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 //using routes
 app.use('/api', apiRoutes);
@@ -24,5 +23,5 @@ app.use('/', htmlRoutes);
 
 //server set to listen for request on port saved in PORT
 app.listen(PORT, () =>{
-    console.log(`API server now on port ${PORT}`)
+    console.log(`API server now on port ${PORT}`);
 })
