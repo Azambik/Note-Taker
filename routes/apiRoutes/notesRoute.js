@@ -12,13 +12,13 @@ router.get('/notes', (req, res) => {
 router.post('/notes', (req, res) => {
     //setting id number for note
     req.body.id = notes.length.toString();
-    console.log(req.body.id);
+    //console.log(req.body.id);
     const note = createNewNote(req.body, notes);
     res.json(note);
 })
 router.delete('/notes/:id', (req, res) => {
     //getting id to be deleted
-    console.log(req.params.id)
+    //console.log(req.params.id)
     //calling deleteById in notes.js
   deleteById(req.params.id, notes)  
   //sending back response so page can refresh

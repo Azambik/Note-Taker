@@ -42,7 +42,7 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   })
   .then(response => {
-    console.log(response);
+    //console.log(response);
   })
 
   
@@ -58,7 +58,7 @@ const deleteNote = (id) =>
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
-  console.log(activeNote.id);
+  //console.log(activeNote.id);
   if (activeNote.id) {
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
